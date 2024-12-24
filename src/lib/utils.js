@@ -50,6 +50,14 @@ export const repositories = [
     size: 1876,
     visibility: "Public",
     updatedAt: "4 days ago"
+  },
+  {
+    id: "7",
+    name: "social-network",
+    language: "PHP",
+    size: 5432,
+    visibility: "Private",
+    updatedAt: "7 days ago"
   }
 ]
 

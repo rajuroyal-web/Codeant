@@ -21,29 +21,33 @@ export function AuthPage() {
 
   return (
     <div className="container relative min-h-screen flex-col items-center justify-center grid lg:max-w-none lg:grid-cols-2 lg:px-0">
-      <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r">
-        <div className="absolute inset-0 bg-zinc-900" />
+      <div className="relative hidden h-full flex-col bg-white p-10 text-black lg:flex dark:border-r">
+        <div className="absolute inset-0 bg-white" />
         <div className="relative z-20 flex items-center text-lg font-medium">
           <div className="relative h-8 w-8 mr-2">
-            {!logoError ? (
-              <img 
-                src={images.codeant}
-                alt="CodeAnt AI Logo" 
-                className="h-8 w-8 object-contain"
-                onError={() => setLogoError(true)}
-              />
-            ) : (
-              <div className="h-8 w-8 bg-white/10 rounded-md flex items-center justify-center">
-                <Code2 className="h-5 w-5" />
-              </div>
-            )}
+            <img 
+              src={images.codeant}
+              alt="CodeAnt AI Logo" 
+              className="h-8 w-8 object-contain"
+              onError={() => setLogoError(true)}
+            />
           </div>
           CodeAnt AI
         </div>
         <div className="relative z-20 mt-auto flex items-center justify-center h-full">
           <div className="space-y-4">
             <div className="bg-white rounded-lg shadow-lg p-6 mb-4 max-w-md">
-              <h3 className="text-lg font-semibold text-center mb-4">AI to Detect & Autofix Bad Code</h3>
+              <div className="flex items-center mb-4">
+                <div className="h-8 w-8 mr-2">
+                  <img 
+                    src={images.codeant}
+                    alt="CodeAnt Logo" 
+                    className="h-8 w-8 object-contain"
+                    onError={() => setLogoError(true)}
+                  />
+                </div>
+                <h3 className="text-lg font-semibold">AI to Detect & Autofix Bad Code</h3>
+              </div>
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
                   <div className="text-2xl font-bold">30+</div>
@@ -58,6 +62,23 @@ export function AuthPage() {
                   <div className="text-sm text-gray-600">Hours Saved</div>
                 </div>
               </div>
+            </div>
+            <div className="bg-white rounded-lg shadow-lg p-6 mb-0 w-64 h-32 border border-gray-300 ml-auto -mt-6 relative">
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center">
+                  <div className="h-8 w-8 bg-purple-200 rounded-full flex items-center justify-center mr-2">
+                    <svg className="h-4 w-4 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V7h2v2z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-md font-semibold">Issues Fixed</h3>
+                </div>
+                <div className="absolute top-2 right-2 text-blue-600 text-lg">
+                  ↑ 14%
+                  <div className="text-sm">This week</div>
+                </div>
+              </div>
+              <div className="text-2xl font-bold text-center">500K+</div>
             </div>
           </div>
         </div>
@@ -191,6 +212,13 @@ export function AuthPage() {
             </a>
           </p>
         </div>
+      </div>
+      <div className="absolute bottom-0 left-0 mb-4 ml-4">
+        <img 
+          src={images.codeant_logo}
+          alt="CodeAnt Logo" 
+          className="h-50 w-50 object-contain"
+        />
       </div>
     </div>
   );

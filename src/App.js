@@ -3,6 +3,7 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { AuthPage } from './pages/Auth';
 import { RepositoriesPage } from './pages/Repositories';
 
+
 function PrivateRoute({ children }) {
   const { user } = useAuth();
   
