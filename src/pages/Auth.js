@@ -32,7 +32,7 @@ export function AuthPage() {
               onError={() => setLogoError(true)}
             />
           </div>
-          CodeAnt AI
+          <span>CodeAnt AI</span>
         </div>
         <div className="relative z-20 mt-auto flex items-center justify-center h-full">
           <div className="space-y-4">
@@ -86,7 +86,7 @@ export function AuthPage() {
       <div className="lg:p-8">
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col space-y-2 text-center">
-            <div className="mx-auto mb-4">
+            <div className="flex items-center justify-center space-x-2">
               {!logoError ? (
                 <img 
                   src={images.codeant}
@@ -99,121 +99,122 @@ export function AuthPage() {
                   <Code2 className="h-8 w-8" />
                 </div>
               )}
+              <span className="text-lg font-medium">CodeAnt AI</span>
             </div>
-            <h1 className="text-2xl font-semibold tracking-tight">Welcome to CodeAnt AI</h1>
+            <h1 className="text-2xl font-semibold tracking-tight text-center mt-2">Welcome to CodeAnt AI</h1>
+            <div className="grid grid-cols-2 gap-2 mb-4">
+              <Button
+                variant={activeTab === 'saas' ? 'default' : 'ghost'}
+                onClick={() => setActiveTab('saas')}
+                className="w-full"
+              >
+                SAAS
+              </Button>
+              <Button
+                variant={activeTab === 'self-hosted' ? 'default' : 'ghost'}
+                onClick={() => setActiveTab('self-hosted')}
+                className="w-full"
+              >
+                Self Hosted
+              </Button>
+            </div>
+            {activeTab === 'saas' ? (
+              <div className="space-y-4">
+                <Button 
+                  variant="outline" 
+                  className="w-full" 
+                  size="lg" 
+                  onClick={() => handleLogin('github')}
+                  isLoading={isLoading}
+                >
+                  <img 
+                    src={images.github}
+                    alt="GitHub" 
+                    className="mr-2 h-5 w-5 object-contain dark:invert" 
+                  />
+                  Sign in with Github
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="w-full" 
+                  size="lg" 
+                  onClick={() => handleLogin('bitbucket')}
+                  isLoading={isLoading}
+                >
+                  <img 
+                    src={images.bitbucket}
+                    alt="Bitbucket" 
+                    className="mr-2 h-5 w-5 object-contain" 
+                  />
+                  Sign in with Bitbucket
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="w-full" 
+                  size="lg" 
+                  onClick={() => handleLogin('azure')}
+                  isLoading={isLoading}
+                >
+                  <img 
+                    src={images.azure}
+                    alt="Azure DevOps" 
+                    className="mr-2 h-5 w-5 object-contain" 
+                  />
+                  Sign in with Azure DevOps
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="w-full" 
+                  size="lg" 
+                  onClick={() => handleLogin('gitlab')}
+                  isLoading={isLoading}
+                >
+                  <img 
+                    src={images.gitlab}
+                    alt="GitLab" 
+                    className="mr-2 h-5 w-5 object-contain" 
+                  />
+                  Sign in with GitLab
+                </Button>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                <Button 
+                  variant="outline" 
+                  className="w-full" 
+                  size="lg" 
+                  onClick={() => handleLogin('gitlab-self')}
+                  isLoading={isLoading}
+                >
+                  <img 
+                    src={images.gitlab}
+                    alt="GitLab" 
+                    className="mr-2 h-5 w-5 object-contain" 
+                  />
+                  Self Hosted GitLab
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="w-full" 
+                  size="lg" 
+                  onClick={() => handleLogin('sso')}
+                  isLoading={isLoading}
+                >
+                  <Key className="mr-2 h-5 w-5" />
+                  Sign in with SSO
+                </Button>
+              </div>
+            )}
+            <p className="px-8 text-center text-sm text-gray-800">
+              By signing up you agree to the{" "}
+              <a href="#" className="underline underline-offset-4 hover:text-primary">
+                Privacy Policy
+              </a>
+            </p>
           </div>
-          <div className="grid grid-cols-2 gap-2 mb-4">
-            <Button
-              variant={activeTab === 'saas' ? 'default' : 'ghost'}
-              onClick={() => setActiveTab('saas')}
-              className="w-full"
-            >
-              SAAS
-            </Button>
-            <Button
-              variant={activeTab === 'self-hosted' ? 'default' : 'ghost'}
-              onClick={() => setActiveTab('self-hosted')}
-              className="w-full"
-            >
-              Self Hosted
-            </Button>
-          </div>
-          {activeTab === 'saas' ? (
-            <div className="space-y-4">
-              <Button 
-                variant="outline" 
-                className="w-full" 
-                size="lg" 
-                onClick={() => handleLogin('github')}
-                isLoading={isLoading}
-              >
-                <img 
-                  src={images.github}
-                  alt="GitHub" 
-                  className="mr-2 h-5 w-5 object-contain dark:invert" 
-                />
-                Sign in with Github
-              </Button>
-              <Button 
-                variant="outline" 
-                className="w-full" 
-                size="lg" 
-                onClick={() => handleLogin('bitbucket')}
-                isLoading={isLoading}
-              >
-                <img 
-                  src={images.bitbucket}
-                  alt="Bitbucket" 
-                  className="mr-2 h-5 w-5 object-contain" 
-                />
-                Sign in with Bitbucket
-              </Button>
-              <Button 
-                variant="outline" 
-                className="w-full" 
-                size="lg" 
-                onClick={() => handleLogin('azure')}
-                isLoading={isLoading}
-              >
-                <img 
-                  src={images.azure}
-                  alt="Azure DevOps" 
-                  className="mr-2 h-5 w-5 object-contain" 
-                />
-                Sign in with Azure DevOps
-              </Button>
-              <Button 
-                variant="outline" 
-                className="w-full" 
-                size="lg" 
-                onClick={() => handleLogin('gitlab')}
-                isLoading={isLoading}
-              >
-                <img 
-                  src={images.gitlab}
-                  alt="GitLab" 
-                  className="mr-2 h-5 w-5 object-contain" 
-                />
-                Sign in with GitLab
-              </Button>
-            </div>
-          ) : (
-            <div className="space-y-4">
-              <Button 
-                variant="outline" 
-                className="w-full" 
-                size="lg" 
-                onClick={() => handleLogin('gitlab-self')}
-                isLoading={isLoading}
-              >
-                <img 
-                  src={images.gitlab}
-                  alt="GitLab" 
-                  className="mr-2 h-5 w-5 object-contain" 
-                />
-                Self Hosted GitLab
-              </Button>
-              <Button 
-                variant="outline" 
-                className="w-full" 
-                size="lg" 
-                onClick={() => handleLogin('sso')}
-                isLoading={isLoading}
-              >
-                <Key className="mr-2 h-5 w-5" />
-                Sign in with SSO
-              </Button>
-            </div>
-          )}
-          <p className="px-8 text-center text-sm text-gray-800">
-            By signing up you agree to the{" "}
-            <a href="#" className="underline underline-offset-4 hover:text-primary">
-              Privacy Policy
-            </a>
-          </p>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 mb-4 ml-4">
+      <div className="absolute bottom-0 left-0 mb-4 ml-4 hidden lg:block">
         <img 
           src={images.codeant_logo}
           alt="CodeAnt Logo" 

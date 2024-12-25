@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import { Sidebar } from '../components/layout/Sidebar';
+import { MobileHeader } from '../components/layout/MobileHeader';
 import { repositories } from '../lib/utils';
 import { RefreshCw, Plus, Search } from 'lucide-react';
 
 export function RepositoriesPage() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const filteredRepositories = repositories.filter(repo =>
     repo.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -27,8 +29,18 @@ export function RepositoriesPage() {
 
   return (
     <div className="grid lg:grid-cols-[280px_1fr] h-screen">
-      <Sidebar className="hidden lg:block" />
+      <Sidebar 
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+        className="lg:hidden"
+      />
+      <Sidebar 
+        className="hidden lg:block"
+        isOpen={false}
+        onClose={() => {}}
+      />
       <div className="flex flex-col h-screen">
+        <MobileHeader onMenuClick={() => setIsSidebarOpen(true)} />
         <div className="border-b">
           <div className="flex justify-between items-center p-4">
             <div>
@@ -65,12 +77,12 @@ export function RepositoriesPage() {
             </div>
           </div>
         </div>
-        <div className="flex-1 overflow-auto">
-          <div className="divide-y">
+        <div className="flex-1 overflow-auto p-4">
+          <div className="space-y-3">
             {filteredRepositories.map((repo) => (
               <div
                 key={repo.id}
-                className="flex items-center justify-between p-4 hover:bg-muted/50 transition-colors"
+                className="flex items-center justify-between p-4 hover:bg-muted/50 transition-colors rounded-lg bg-white shadow-sm border border-gray-100 hover:shadow-md"
               >
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2 mb-1">
